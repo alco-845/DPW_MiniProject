@@ -48,7 +48,13 @@
                   </svg></a>
               </li>
               <li class="nav-item">
-                <button type="button" class="btn btn-light">Sign in</button>
+                <a id="display-name" class="nav-link" href="#"></a>
+              </li>
+              <li class="nav-item">
+                <a id="signin" href="login-page.html">
+                  <button id="login" type="button" class="btn btn-light">Sign in</button>
+                  <button id="logout" type="button" class="btn btn-light">Log out</button>
+              </a>
               </li>
             </ul>
           </div>
@@ -139,6 +145,26 @@
         <p>2021 | Marital | Online God Clothes <a class="link"href="#">| Privasi Policy</a></p>
       </footer>
       <script type="text/javascript">
+    window.onload = (event) => {
+        // const login = document.querySelector('#login');
+        if (localStorage.getItem('login') == undefined) {
+          document.querySelector('#login').style.display = 'block';
+          document.querySelector('#logout').style.display = 'none';
+        }
+        else{
+          const welcome = document.querySelector('#display-name');
+          welcome.innerHTML = 'Welcome, ' + localStorage.getItem('ID');
+         document.querySelector('#login').style.display = 'none';
+        document.querySelector('#logout').style.display = 'block'; 
+        }
+    };
+    logout.addEventListener('click', (event) => {
+      localStorage.removeItem('login');
+      document.querySelector('#signin').setAttribute("href", "#");
+      location.reload();
+    });
+
+
         var nav = document.querySelector('nav');
   
         window.addEventListener('scroll', function () {
