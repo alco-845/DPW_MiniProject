@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+   <title>Local Storage</title>
+   <link rel="stylesheet" type="text/css" href="login-page.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+ 
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<input id="nama" type="text" placeholder="Name" />
+			<input id="email" type="email" placeholder="Email" />
+			<input id="pass" type="password" placeholder="Password" />
+			<br>
+			<button id="buttonregister">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form id="next-page">
+			<h1>Sign in</h1>
+			<span>menggunakan akun anda</span>
+			<input id="logname" type="text" placeholder="Username" />
+			<input id="logpass" type="password" placeholder="Password" />
+			<a href="reset-password.html">Lupa password?</a>
+			<button id="buttonlogin">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Halo, Teman!</h1>
+				<p>Agar dapat menikmati voucher pengguna baru, silahkan mendaftar dengan data diri yang benar!</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Halo, Teman!</h1>
+				<p>Jika kamu belum memiliki akun, silahkan daftar agar terhubung dengan kita dan dapatkan voucher untuk pengguna baru!</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+   <script>
+ 			buttonregister.addEventListener('click', function(event) {
+ 			const name = document.querySelector('#nama').value;
+ 			const pass = document.querySelector('#pass').value;
+   			if (localStorage.getItem(name) == undefined){
+   				if (pass.length < 8){
+   					alert('Password minimal memiliki 8 huruf')
+   				}
+   				else{
+   					const email = document.querySelector('#email').value;
+   					if (localStorage.getItem(email) == undefined){
+   						localStorage.setItem(email,name)
+   						}
+   					
+   					localStorage.setItem(name,pass);
+   					alert('Akun berhasil dibuat');
+   					document.querySelector('#logname').value = name;
+   					document.querySelector('#logpass').value = pass;
+   					document.querySelector('#buttonregister').setAttribute('type','reset')
+   				}
+   			}
+   			else{
+   				alert('Maaf, username is already available')
+   			}
+
+      });
+
+ 		  buttonlogin.addEventListener('click', function(event) {
+ 			const logname = document.querySelector('#logname').value;
+ 			const logpass = document.querySelector('#logpass').value;
+
+ 			if (logpass == localStorage.getItem(logname)){
+ 				// localStorage.id = logname
+ 				localStorage.setItem('ID',logname)
+ 				// document.write(`Anda berhasil login sebagai ${logname}`)
+        localStorage.setItem('login','login')
+ 				document.querySelector('#next-page').setAttribute("action", "landingPage.html");
+ 			}
+ 			else{
+ 				alert('Maaf, Username anda tidak terdaftar atau password anda salah!')
+ 			}
+      });
+
+      const signUpButton = document.getElementById('signUp');
+      const signInButton = document.getElementById('signIn');
+      const container = document.getElementById('container');
+
+      signUpButton.addEventListener('click', () => {
+      	container.classList.add("right-panel-active");
+      });
+
+      signInButton.addEventListener('click', () => {
+      	container.classList.remove("right-panel-active");
+      });
+
+
+  </script>
+</body>
+ 
+</html>
