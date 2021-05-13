@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylepricing.css">
+    <link rel="stylesheet" href="assets/css/stylepricing.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
     </script>
@@ -20,7 +21,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="logo2.png" alt="logo" width="50" height="50">
+                <img src="assets/img/logo2.png" alt="logo" width="50" height="50">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,27 +31,35 @@
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="landingPage.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#athena">Athena</a>
+                        <a class="nav-link" href="athena.html">Athena</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#ares">Ares</a>
+                        <a class="nav-link" href="ares.html">Ares</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#posaidon">Poseidon</a>
+                        <a class="nav-link" href="">Poseidon</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
-                                fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </svg></a>
+                        <a class="nav-link cart" href="checkout.html"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg></a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-light">Sign in</button>
-                    </li>
+                        <a id="display-name" class="nav-link" href=""></a>
+                      </li>
+                      <li class="nav-item">
+                        <a id="signin" href="login-page.html">
+                          <button id="login" type="button" class="btn btn-light">
+                            Sign in
+                          </button>
+                          <button id="logout" type="button" class="btn btn-light">
+                            Log out
+                          </button>
+                        </a>
+                      </li>
                 </ul>
             </div>
         </div>
@@ -59,10 +68,10 @@
     <div class="container-kaos">
         <div class="row">
             <div class="col img">
-                <img class="kaos" src="poseidon.png">
+                <img class="kaos" src="assets/img/poseidonItem.png">
             </div>
             <div class="col">
-                <h1>Marital Poseidon Series</h1>
+                <h1 id="product">Marital Poseidon Series</h1>
                 <h2>RP.250.000</h2>
                 <h5>Deskripsi Produk</h5>
                 <p>
@@ -72,16 +81,16 @@
                     Size : <br> M : 48 x 70 cm <br> L : 50 x 72 cm <br> XL : 52 x 74 cm
                 </p>
                 <label>Size</label>
-                <input type="radio" name="L" id="size">M
-                <input type="radio" name="L" id="size">L
-                <input type="radio" name="L" id="size">XL
+                <input type="radio" name="size" id="size" value="M">M
+                <input type="radio" name="size" id="size" value="L">L
+                <input type="radio" name="size" id="size" value="XL">XL
                 <br>
                 <label>Kuantitas</label>
-                <input type="number" name="kuantitas" id="kuantitas" min="1" placeholder="1">
+                <input type="number" name="kuantitas" id="kuantitas" min="1" value="1">
                 <br>
                 <br>
-                <button type="button" class="btn btn-dark">Masukkan Keranjang</button>
-                <button type="button" class="btn btn-dark">Beli Sekarang</button>
+                <button type="button" class="btn btn-dark" onclick="addItem();">Masukkan Keranjang</button>
+                <button type="button" class="btn btn-dark" onclick="buy();">Beli Sekarang</button>
             </div>
         </div>
     </div>
@@ -89,22 +98,124 @@
     <!-- footer -->
     <footer>
         <div class="container" style="padding: 10px; text-align: center;">
-            <a class="link" href="#">Home</a>
-            <a class="link" href="#athena">Athena</a>
-            <a class="link" href="#ares">Ares</a>
-            <a class="link" href="#posaidon">Poseidon</a>
+            <a class="link" href="landingPage.html">Home</a>
+            <a class="link" href="athena.html">Athena</a>
+            <a class="link" href="ares.html">Ares</a>
+            <a class="link" href="">Poseidon</a>
         </div>
         <div class="container" style="text-align: center;">
-            <h6 id="sosmed" style="color: gray;">Connect With Us</h6>
-            <a id="sosmed" href="instagram.com"><img src="ig.png" alt="instagram"
-                    style="width: 20px; height: 20px;"></a>
-            <a id="sosmed" href="twitter.com"><img src="twitter.png" alt="twitter"
-                    style="width: 20px; height: 20px;"></a>
-            <a id="sosmed" href="youtube.com"><img src="yt.png" alt="yt" style="width: 20px; height: 20px;"></a>
-            <a id="sosmed" href="facebook.com"><img src="fb.png" alt="fb" style="width: 20px; height: 20px;"></a>
+            <h6 id="sosmed"style="color: gray;">Connect With Us</h6>
+            <a id="sosmed" href="https://www.instagram.com" target="_blank"
+          ><img
+            src="assets/img/ig.png"
+            alt="instagram"
+            style="width: 20px; height: 20px"
+        /></a>
+        <a id="sosmed" href="https://www.twitter.com" target="_blank"
+          ><img
+            src="assets/img/twitter.png"
+            alt="twitter"
+            style="width: 20px; height: 20px"
+        /></a>
+        <a id="sosmed" href="https://www.youtube.com" target="_blank"
+          ><img src="assets/img/yt.png" alt="yt" style="width: 20px; height: 20px"
+        /></a>
+        <a id="sosmed" href="https://www.facebook.com" target="_blank"
+          ><img src="assets/img/fb.png" alt="fb" style="width: 20px; height: 20px"
+        /></a>
         </div>
-        <p>2021 | Marital | Online God Clothes <a class="link" href="#">| Privasi Policy</a></p>
+        <p><script>
+            document.write(new Date().getFullYear())
+            </script> | Marital | Online God Clothes <a class="link" href="#">| Privasi Policy</a></p>
     </footer>
+    <script type="text/javascript">
+        window.onload = (event) => {
+          // const login = document.querySelector('#login');
+          if (localStorage.getItem("login") == undefined) {
+            document.querySelector("#login").style.display = "block";
+            document.querySelector("#logout").style.display = "none";
+            document.querySelector(".cart").style.display = "none";
+          } else {
+            const welcome = document.querySelector("#display-name");
+            welcome.innerHTML = "Welcome, " + localStorage.getItem("ID");
+            document.querySelector("#login").style.display = "none";
+            document.querySelector("#logout").style.display = "block";
+          }
+        };
+        logout.addEventListener("click", (event) => {
+          localStorage.removeItem("login");
+          document.querySelector("#signin").setAttribute("href", "#");
+          localStorage.cart = [];
+          location.reload();
+        });
+  
+        function cekRadio() {
+          var radio = document.querySelectorAll('input[name="size"]');
+              for (var rb of radio) {
+                  if (rb.checked) {
+                      return rb.value;
+                  }
+              }
+              return false
+        }
+  
+        var cart = [];
+        $(function () {
+            if (localStorage.cart)
+            {
+                cart = JSON.parse(localStorage.cart);
+            }
+        });
+  
+        function addItem() {
+          var nameVal = document.getElementsByTagName('h1')[0].innerHTML;
+          var quantVal = parseInt($("#kuantitas").val());
+  
+          if (localStorage.getItem("login") == undefined) {
+            window.location.href = "login-page.html";
+          } else if (cekRadio() == false) {
+              alert("Mohon pilih ukuran");
+          } else {
+              var sizeVal = cekRadio();
+  
+              // update
+              for (var i in cart) {
+                if (cart[i].product == nameVal && cart[i].size == sizeVal) {
+                  cart[i].quant += quantVal;
+                  saveCart();
+                  alert("Sukses menambahkan kedalam keranjang");
+                  return;
+                }
+              }
+  
+              // create Object / dictionary
+              var item = { image: "poseidonItem.png", product: nameVal, size: sizeVal, price: 250000, quant: quantVal };
+              cart.push(item);
+              saveCart();
+              alert("Sukses menambahkan kedalam keranjang");
+          }        
+        }
+  
+        function saveCart() {
+          if (window.localStorage) {
+            localStorage.cart = JSON.stringify(cart);
+          }
+        }
+  
+        function buy() {
+          if (localStorage.getItem("login") == undefined) {
+            window.location.href = "login-page.html";
+          } else if (cekRadio() == false) {
+              alert("Mohon pilih ukuran");
+          } else {
+              var choice = confirm("Apakah anda ingin membeli item ini?");
+              if (choice == true) {                
+                  alert("Berhasil membeli item")
+                  window.location.href = "landingPage.html";
+                  return true;
+              }
+          }
+        }
+      </script>
 </body>
-
 </html>
