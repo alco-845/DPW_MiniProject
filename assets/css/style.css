@@ -29,25 +29,25 @@ li .btn{
 }
 /* jumbotron */
 .jumbotron{
-    background-image: url(img/bg1.png);
+    background-image: url(../img/bg1.png);
     background-size: cover;
     width: auto;
     height: 668px;
 }
 .athena{
-    background-image: url(img/athena.png);
+    background-image: url(../img/athena.png);
     background-size: cover;
     width: auto;
     height: 668px;
 }
 .ares{
-    background-image: url(img/ares.png);
+    background-image: url(../img/ares.png);
     background-size: cover;
     width: auto;
     height: 668px;
 }
 .poseidon{
-    background-image: url(img/poseidon.png);
+    background-image: url(../img/poseidon.png);
     background-size: cover;
     width: auto;
     height: 668px;

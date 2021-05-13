@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marital | Improve Your Style</title>
+    <title>Checkout</title>
     <!-- my css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <!-- icon css -->
     <link
       rel="stylesheet"
@@ -34,7 +34,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="img/logo.png" alt="logo" width="50" height="50" />
+          <img src="assets/img/logo.png" alt="logo" width="50" height="50" />
         </a>
         <button
           class="navbar-toggler"
@@ -54,6 +54,15 @@
               <a class="nav-link" href="landingPage.html">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="athena.html">Athena</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ares.html">Ares</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="poseidon.html">Poseidon</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link cart" href="checkout.html"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +78,7 @@
               ></a>
             </li>
             <li class="nav-item">
-              <a id="display-name" class="nav-link" href="#"></a>
+              <a id="display-name" class="nav-link" href=""></a>
             </li>
             <li class="nav-item">
               <a id="signin" href="login-page.html">
@@ -113,6 +122,7 @@
                 <th>#</th>
                 <th>Product Image</th>
                 <th>Product Name</th>
+                <th>Size</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
@@ -124,32 +134,35 @@
           </table>
         </div>
       </div>
-      <img src="img/bottom.png" alt="bottom" width="80px" height="80px" />
+      <img src="assets/img/bottom.png" alt="bottom" width="80px" height="80px" />
     </section>
     <!-- footer -->
     <footer>
       <div class="container" style="padding: 10px; text-align: center">
         <a class="link" href="landingPage.html">Home</a>
+        <a class="link" href="athena.html">Athena</a>
+        <a class="link" href="ares.html">Ares</a>
+        <a class="link" href="poseidon.html">Poseidon</a>
       </div>
       <div class="container" style="text-align: center">
         <h6 id="sosmed" style="color: gray">Connect With Us</h6>
         <a id="sosmed" href="https://www.instagram.com" target="_blank"
           ><img
-            src="img/ig.png"
+            src="assets/img/ig.png"
             alt="instagram"
             style="width: 20px; height: 20px"
         /></a>
         <a id="sosmed" href="https://www.twitter.com" target="_blank"
           ><img
-            src="img/twitter.png"
+            src="assets/img/twitter.png"
             alt="twitter"
             style="width: 20px; height: 20px"
         /></a>
         <a id="sosmed" href="https://www.youtube.com" target="_blank"
-          ><img src="img/yt.png" alt="yt" style="width: 20px; height: 20px"
+          ><img src="assets/img/yt.png" alt="yt" style="width: 20px; height: 20px"
         /></a>
         <a id="sosmed" href="https://www.facebook.com" target="_blank"
-          ><img src="img/fb.png" alt="fb" style="width: 20px; height: 20px"
+          ><img src="assets/img/fb.png" alt="fb" style="width: 20px; height: 20px"
         /></a>
       </div>
       <p>
@@ -184,7 +197,7 @@
       var nav = document.querySelector("nav");
 
       window.addEventListener("scroll", function () {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 50) {
           nav.classList.add("bg-dark", "shadow");
         } else {
           nav.classList.remove("bg-dark", "shadow");
@@ -199,30 +212,6 @@
           showCart();
         }
       });
-
-      function addItem() {
-        var imageVal = $("#image").val();
-        var nameVal = $("#product").val();
-        var priceVal = parseInt($("#price").val());
-        var quantVal = parseInt($("#qty").val());
-
-        // update
-        for (var i in cart) {
-          if (cart[i].product == nameVal) {
-            cart[i].quant += quantVal;
-            showCart();
-            saveCart();
-            return;
-          }
-        }
-
-        // create Object / dictionary
-        var item = { image: imageVal, product: nameVal, price: priceVal, quant: quantVal };
-        cart.push(item);
-
-        saveCart();
-        showCart();
-      }
 
       function deleteItem(index) {
         cart.splice(index, 1);
@@ -257,17 +246,19 @@
       function getConfirmm() {
         var choice = confirm("Do you want to checkout?");
         if (choice == true) {
+          alert("Success");
           localStorage.cart = [];
           document
             .querySelector("#next-page")
             .setAttribute("href", "landingPage.html");
           return true;
         }
-      }
+      } 
 
       function showCart() {
         if (cart.length == 0) {
           $("#cartTable").css("visibility", "hidden");
+          $("#txtEmpty").css("display", "block");
           $("#cartTable").empty();
           return;
         }
@@ -281,11 +272,13 @@
           "<tr><td>" +
             (parseInt(i) + 1) +
             "</td><td>" +
-              "<img style='height: 100px; width: 100px;' src='img/" + item.image + " '  />" +
+              "<img style='height: 100px; width: 100px;' src='assets/img/" + item.image + " '  />" +
             "</td><td>" +
             item.product +
             "</td><td>" +
-            item.price +
+              item.size +
+            "</td><td>" +
+              item.price +
             "</td><td>" +
             "<button class='bi bi-plus-lg btn btn-primary' onclick='addAmount(" +
             i +
@@ -307,7 +300,7 @@
         }
         $("#cartFooter").empty();
         var footer =
-          "<tr><td colspan='5'><h3>Sub Total :</h3></td><td colspan='1'> " +
+          "<tr><td colspan='6'><h3>Sub Total :</h3></td><td colspan='1'> " +
             subTotal +
           "</td><td><a id='next-page' onclick = 'getConfirmm();'><button class='btn btn-success'>Checkout</button></a></td></tr>";
         $("#cartFooter").append(footer);

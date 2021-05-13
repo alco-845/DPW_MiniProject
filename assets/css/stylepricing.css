@@ -42,7 +42,6 @@
  input {
      width: 50px;
      height: 20px;
-     font-size: 16px;
  }
 
  h1 {
@@ -103,3 +102,12 @@
      text-decoration: none;
      color: #a8a8ac;
  }
+
+ footer a:hover{
+    color: gold;
+}
+
+#signin{
+    margin-top: -20px;
+    
+}
