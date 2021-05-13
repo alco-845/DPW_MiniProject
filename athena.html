@@ -198,6 +198,7 @@
   
         function buy() {
           if (localStorage.getItem("login") == undefined) {
+            alert('Anda belum login, anda akan diteruskan ke halaman login!')
             window.location.href = "login-page.html";
           } else if (cekRadio() == false) {
               alert("Mohon pilih ukuran");
