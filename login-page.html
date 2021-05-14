@@ -57,13 +57,16 @@
    					const email = document.querySelector('#email').value;
    					if (localStorage.getItem(email) == undefined){
    						localStorage.setItem(email,name)
-   						}
+      					localStorage.setItem(name,pass);
+      					alert('Akun berhasil dibuat');
+      					document.querySelector('#logname').value = name;
+      					document.querySelector('#logpass').value = pass;
+      					document.querySelector('#buttonregister').setAttribute('type','reset')
+                     }
+                  else{
+                     alert('Maaf, email sudah terdaftar!')
+                  }
    					
-   					localStorage.setItem(name,pass);
-   					alert('Akun berhasil dibuat');
-   					document.querySelector('#logname').value = name;
-   					document.querySelector('#logpass').value = pass;
-   					document.querySelector('#buttonregister').setAttribute('type','reset')
    				}
    			}
    			else{
